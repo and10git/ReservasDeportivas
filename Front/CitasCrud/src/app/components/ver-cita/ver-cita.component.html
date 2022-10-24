@@ -1,0 +1,16 @@
+<h1 class="title">Detalles de la cita</h1>
+<div *ngIf="cita != null" class="container">
+    <mat-card class="card">
+        <mat-card-title>{{cita.actividad}}</mat-card-title>
+        <mat-card-content>
+            <p><strong>A nombre de:</strong> {{cita.nombre}}</p>
+            <p><strong>Nº de pista:</strong> {{cita.numPista}}</p>
+            <p><strong>Fecha:</strong> {{cita.fechaCita}}</p>
+            <p><strong>Horas:</strong> {{cita.tiempoHoras}} hs</p>
+            <p><strong>Observaciones:</strong> {{cita.observaciones}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button [routerLink]="['/listaCitas']" mat-raised-button>Regresar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,0 +1,59 @@
+<div class="title">
+    <h1>Citas</h1>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="container">
+    <mat-form-field appearance="standard">
+        <mat-label>Buscar</mat-label>
+        <input matInput placeholder="Ingrese un filtro de búsqueda" (keyup)="applyFilter($event)" #input
+            autocomplete="off">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actividad">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Actividad </th>
+            <td mat-cell *matCellDef="let element"> {{element.actividad}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="numPista">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº pista </th>
+            <td mat-cell *matCellDef="let element"> {{element.numPista}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaCita">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaCita}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tiempoHoras">
+            <th mat-header-cell *matHeaderCellDef> Horas </th>
+            <td mat-cell *matCellDef="let element"> {{element.tiempoHoras}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef>
+                <button mat-raised-button color="primary" [routerLink]="['/agregarCita']">
+                    <mat-icon class="view" fontIcon="add" matTooltip="Agregar cita"></mat-icon>
+                </button>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon class="view" routerLink="/verCita/{{element.id}}" fontIcon="search" matTooltip="Ver detalles">
+                </mat-icon>
+                <mat-icon class="edit" routerLink="/editarCita/{{element.id}}" fontIcon="edit" matTooltip="Editar cita">
+                </mat-icon>
+                <mat-icon class="delete" (click)="eliminarCita(element.id)" fontIcon="delete"
+                    matTooltip="Eliminar cita"></mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

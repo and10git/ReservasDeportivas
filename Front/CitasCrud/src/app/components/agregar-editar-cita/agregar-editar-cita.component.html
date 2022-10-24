@@ -1,0 +1,58 @@
+<h1 class="title">{{operacion}} cita</h1>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="agregarEditarCita()">
+        <mat-grid-list cols="1" rowHeight="80px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" formControlName="nombre" matInput autocomplete="off">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Actividad</mat-label>
+                    <select matNativeControl formControlName="actividad" required>
+                        <option *ngFor="let actividad of listaActividades" [value]="actividad.id">{{actividad.nombre}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nº pista</mat-label>
+                    <input type="number" formControlName="numeroPista" matInput autocomplete="off" min="1" max="5">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha</mat-label>
+                    <input type="datetime-local" formControlName="fecha" matInput autocomplete="off">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Horas</mat-label>
+                    <input type="number" formControlName="tiempoHoras" matInput autocomplete="off" min="1" max="24">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Observaciones</mat-label>
+                    <input formControlName="observaciones" matInput autocomplete="off">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button
+                    color="primary">Aceptar</button>
+                <button mat-raised-button routerLink="/listacitas">Cancelar</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</div>
