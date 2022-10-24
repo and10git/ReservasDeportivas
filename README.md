@@ -1,5 +1,5 @@
 # ReservasDeportivas
-Aplicación en Angular y Net Core para crear citas para distintos deportes seleccionando pista, fecha y tiempo.
+Aplicación para crear citas para distintos deportes seleccionando pista, fecha y tiempo.
 
 Para ejecutar la aplicacion se debe ejecuatar la API de .Net Core y la aplicacion web de Angular.
 
